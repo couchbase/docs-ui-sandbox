@@ -221,6 +221,10 @@
 }
 
 .card-row .column .content p {
+  text-align: left;
+}
+
+.card-row .column .content-j p {
   text-align: justify;
 }
 
