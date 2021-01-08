@@ -19,9 +19,7 @@
 <ul class="frame-dropdown-list">
 {{#each page.versions}}
 {{#unless (eq ./version @root.page.version)}}
-<li><a class="frame-item" href="{{relativize ./url}}">
-{{!-- {{{@root.page.component.title}}} --}}
-{{./displayVersion}}</a></li>
+<li><a class="frame-item" href="{{relativize ./url}}">{{./displayVersion}}</a></li>
 {{/unless}}
 {{/each}}
 </ul>

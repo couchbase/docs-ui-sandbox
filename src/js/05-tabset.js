@@ -45,7 +45,7 @@ find('.doc .tabset').forEach(function (tabset) {
                 var dropdownBtn = tab.parentNode.parentNode.querySelector('.dropdown-btn-down')
                 var dropdownMenu = tab.parentNode.parentNode.querySelector('.tabs .other-tablist')
                 dropdownBtn.addEventListener('click', function (e) {
-                  console.log(e, 'enter')
+                  // console.log(e, 'enter')
                   e.preventDefault()
                   if (dropdownMenu.style.display === 'block' || dropdownMenu.classList.contains('show')) {
                     dropdownMenu.classList.remove('show')

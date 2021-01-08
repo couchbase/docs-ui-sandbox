@@ -76,5 +76,9 @@
     },
   }
 
+  if (window.location.hash) {
+    var hash = window.location.hash
+    $('html, body').animate({ 'scrollTop': $(hash).offset().top }, 'slow')
+  }
   /*eslint-env jquery*/
 })(jQuery)

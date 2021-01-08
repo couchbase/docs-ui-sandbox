@@ -34,7 +34,7 @@ endif::[]
 :url-couchbase: https://couchbase.com
 
 ifdef::badges[]
-image:https://img.shields.io/github/release/{project-repo-name}.svg[Latest Release,link={url-project}/releases/download/{current-release}/ui-bundle.zip]
+image:https://img.shields.io/static/v1?label=release&amp;message={current-release}&amp;color=blue[Latest Release,link={url-project}/releases/download/{current-release}/ui-bundle.zip,format=svg]
 endif::[]
 
 toc::[]
@@ -131,7 +131,7 @@ Clone the UI project using git:
 
 [subs=attributes+]
  $ git clone {url-project} &&
-   cd "`basename $_`"
+   cd "$(basename "$_" .git)"
 
 The example above clones the Couchbase docs UI project and then switches to the project folder on your filesystem.
 Stay in this project folder when executing all subsequent commands.
@@ -144,7 +144,7 @@ In your terminal, execute the following command:
 This command installs the dependencies listed in [.path]_package.json_ into the [.path]_node_modules/_ folder inside the project.
 This folder does not get included in the UI bundle and should _not_ be committed to the source control repository.
 
-In order for the pro Font Awesome icons work, you must first add the following file to the root folder of the UI project:
+In order for the pro Font Awesome icons to work, you must first add the following file to the root folder of the UI project:
 
 ..npmrc
 ----
@@ -386,7 +386,7 @@ This section documents the logic used to compute the URL for the View Latest but
 If the version of the current page does not match the latest version of the component (i.e., product), a banner is displayed to the visitor.
 If the version is a prerelease, the banner states that you're viewing a prerelease version.
 If the version is an older stable release, the banner states that a newer version is available.
-On the banner offers a button named "View Latest" that directs the visitor to the latest version.
+The banner offers a button named "View Latest" that directs the visitor to the latest version.
 
 The "View Latest" button tries to preserve the current page when switching versions.
 If the page is no longer available, then the button directs the user to the start page for the component.
@@ -528,7 +528,7 @@ SCM::
 * [x] Lightweight checkout
 ====
 
-In the Jenkinsfile, a credentials function is used to binds the value of the personal access token for the cb-docs-robot read from the specified Jenkins credential to the `GITHUB_API_TOKEN` environment varaible.
+In the Jenkinsfile, a credentials function is used to bind the value of the personal access token for the cb-docs-robot read from the specified Jenkins credential to the `GITHUB_API_TOKEN` environment variable.
 This environment variable is used by the release task to authenticate against the GitHub API as the cb-docs-robot user.
 
 The heart of the build are the `sh` commands defined in the Jenkinsfile.

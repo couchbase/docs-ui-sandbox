@@ -13,7 +13,8 @@ Other CSS rules for styling code blocks:
 */
 .hljs-comment,
 .hljs-meta {
-  color: #708090;
+  /* color: #708090; */
+  color: var(--color-brand-gray1);
 }
 
 .hljs-keyword,
@@ -46,7 +47,8 @@ Other CSS rules for styling code blocks:
 
 .hljs-built_in,
 .hljs-function .hljs-title {
-  color: #e6db74;
+  /* color: #e6db74; */
+  color: var(--color-brand-orange);
 }
 
 .hljs-regexp {

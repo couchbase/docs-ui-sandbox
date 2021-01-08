@@ -42,6 +42,7 @@
   if (sidebar) {
     window.addEventListener('load', function () {
       onScroll()
+      hashScroll()
       window.addEventListener('scroll', onScroll)
     })
   }
@@ -91,5 +92,13 @@
 
   function toArray (collection) {
     return [].slice.call(collection)
+  }
+
+  function hashScroll () {
+    // element which needs to be scrolled to
+    var hasValue = window.location.hash
+    var elementTillScroll = document.querySelector(hasValue)
+    // scroll to element
+    elementTillScroll.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 })()
