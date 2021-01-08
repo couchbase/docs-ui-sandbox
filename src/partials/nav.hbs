@@ -7,6 +7,9 @@
 <div class="nav-container-wrap" {{#if page.component}} data-component="{{page.component.name}}" data-version="{{page.version}}"{{/if}}>
   <aside class="nav-container">
     <div class="panels">
+      <div class="group-name">
+        {{page.component.name}}
+      </div>
       {{> nav-menu}}
     </div>
   </aside>
