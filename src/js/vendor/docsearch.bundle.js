@@ -135,7 +135,13 @@
     return hits.map(function (hit) {
       var lvl0 = hit.hierarchy.lvl0
       var lvl1 = hit.hierarchy.lvl1
-      if (!lvl0) lvl0 = hit.hierarchy.lvl0 = hit.component + (hit.version === 'master' ? '' : ' ' + hit.version)
+      if (!lvl0) {
+        if ((lvl0 = hit.component_title)) {
+          lvl0 = hit.hierarchy.lvl0 = lvl0 + (hit.display_version ? ' ' + hit.display_version : '')
+        } else {
+          lvl0 = hit.hierarchy.lvl0 = hit.component + (hit.version ? ' ' + hit.version : '')
+        }
+      }
       if (!lvl1) lvl1 = hit.hierarchy.lvl1 = lvl0
       var lvl0Qualifier = lvl0Qualifiers[lvl0]
       if (lvl0 !== prevLvl0) {
