@@ -8,6 +8,16 @@
 <link rel="schema.dcterms" href="https://purl.org/dc/terms/">
 <meta name="dcterms.subject" content="{{page.component.name}}">
 <meta name="dcterms.identifier" content="{{page.version}}">
+<meta name="docsearch:component_title" content="{{{page.component.title}}}">
+{{#if (eq page.version 'master')}}
+<meta name="docsearch:component_version" content='["{{{./page.component.name}}}","{{{./page.component.name}}}"]'>
+{{else}}
+{{#with page.componentVersion}}
+<meta name="docsearch:component_version" content='["{{{./name}}}@{{{./version}}}"{{#if (eq this @root.page.component.latest)}},"{{{./name}}}"{{/if}}]'>
+<meta name="docsearch:version" content="{{{./version}}}">
+<meta name="docsearch:display_version" content='"{{{./displayVersion}}}"'>
+{{/with}}
+{{/if}}
 {{/if}}
 <meta name="generator" content="Antora {{antoraVersion}}">
 <link rel="icon" href="{{{uiRootPath}}}/img/favicon.ico" type="image/x-icon">
