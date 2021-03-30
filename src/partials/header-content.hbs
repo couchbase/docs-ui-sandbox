@@ -69,17 +69,11 @@
                 </ul>
               </div>
               <div class="primary-action">
-                <form class="navbar-item search">
-                  <input type="text" placeholder="Search Docs" class="query" id="search-query" autofocus>
-                  <button type="button" class="search-btn">
-                    <i class="fas fa-search"></i>
-                  </button>
+                {{#if env.ALGOLIA_API_KEY}}
+                <form class="navbar-item search" id="search">
+                  <input class="query" type="text" placeholder="Search Docs"{{#if page.home}} autofocus{{/if}}><i class="fas fa-search"></i>
                 </form>
-                {{!-- <div class="parent-site">
-                  <a href="https://www.couchbase.com">
-                    Couchbase.com
-                  </a>
-                </div> --}}
+                {{/if}}
                 <a class="btn btn-primary try-btn" href="https://www.couchbase.com/downloads">
                   Downloads
                 </a>

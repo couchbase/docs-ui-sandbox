@@ -146,6 +146,10 @@
   font-family: "Source Sans Pro", sans-serif;
 } */
 
+.search {
+  position: relative;
+}
+
 .search .query {
   border: none;
   width: 283px;
@@ -155,22 +159,8 @@
   padding-right: 20px;
 }
 
-.search {
-  position: relative;
-}
-
-.search-btn {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  font-size: 1rem;
-  border: none;
-  background: none;
-  padding: 0;
-  width: 16px;
-  height: 16px;
-  color: #999;
+.search .fa-search {
+  margin-right: -1em;
 }
 
 .navbar-burger {
@@ -312,11 +302,6 @@
   .search .query {
     border: 1px solid var(--color-brand-gray5);
     padding: 10px 20px;
-  }
-
-  .search-btn {
-    top: 10px;
-    right: 5px;
   }
 
   /* .parent-site {

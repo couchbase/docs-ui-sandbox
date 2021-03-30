@@ -6,7 +6,7 @@ command = "node_modules/.bin/gulp preview:build"
 NODE_VERSION = "10"
 ALGOLIA_APP_ID = "NI1G57N08Q"
 ALGOLIA_API_KEY = "d3eff3e8bcc0860b8ceae87360a47d54"
-ALGOLIA_INDEX_NAME = "prod_docs_couchbase_replica"
+ALGOLIA_IDX_NAME = "staging_docs_couchbase"
 OPTANON_SCRIPT_URL = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js"
 OPTANON_SCRIPT_DATA_DOMAIN_SCRIPT = "748511ff-10bf-44bf-88b8-36382e5b5fd9"
 
