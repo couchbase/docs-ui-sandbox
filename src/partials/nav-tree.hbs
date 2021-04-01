@@ -1,38 +1,25 @@
-{{#if navigation}}
-{{#each navigation}}
-{{#if (eq ../crumbAtLevel this)}}
-{{#if ( eq ../crumbLevel 0 or eq ../crumbLevel 1 or eq ../crumbLevel 2 or eq ../crumbLevel 3)}}
-{{!-- <div class="main-nav-parent new " data-depth="{{../level}}"><span class="back-to-menu"><i class="fas fa-chevron-left"></i> Main Menu </span>
-
-</div> --}}
-{{/if}}
-{{/if}}
-{{/each}}
-<ul class="nav-list">
-{{!-- {{log ../crumbAtLevel this 'log output'}} --}}
-{{#each navigation}}
-<li class="nav-item{{#if (eq ../crumbAtLevel this)}}
-{{~#if (eq this (last @root.page.breadcrumbs))}} is-current-page{{~else}} is-current-path{{/if}} is-active
-{{~else if (eq ../level 1)}} {{!--is-active--}} is-inactive{{/if}}{{#if (eq ../crumbAtLevel this (and eq ../level 2))}} is-active-depth-2 {{/if}} " data-depth="{{../level}}">
-
-{{#if ./content}}
-<span class="nav-line "  data-depth="{{../level}}">
-{{#if ./items}}
-{{#if ./icons}}
-<i class="{{./icons}}"></i>
-{{/if}}
-<span class="in-toggle" data-depth="{{../level}}"></span>
-{{!-- <button class="nav-toggle"></button> --}}
-{{/if}}
-{{#if ./url}}
-<a class="nav-link" href="{{#if (eq ./urlType 'internal')}}{{relativize ./url}}{{else}}{{./url}}{{/if}}">{{{./content}}}</a>
-{{else}}
-<span class="nav-text ">{{{./content}}}</span>
-{{/if}}
-</span>
-{{/if}}
-{{> nav-tree navigation=./items level=(add ../level 1) crumbLevel=(add ../crumbLevel (and ./content 1)) crumbAtLevel=(lookup @root.page.breadcrumbs (add ../crumbLevel (and ./content 1)))}}
-</li>
-{{/each}}
-</ul>
+{{#if navigation.length}} {{!-- only do stuff if there are nav items to show --}}
+  {{#each navigation}} {{!-- iterate over nav items --}}
+    {{#if ./content}} {{!-- if there's content, then show it --}}
+      <div class="nav-item {{#if ./url}}is-link{{/if}}">
+        {{#if ./items.length}}<i class="material-icons show-more" aria-hidden="true"></i>{{/if}}
+        {{#if ./url}} {{!-- url for nav-item, so make it a link --}}
+          {{~#if (eq ./urlType 'internal')}} {{!-- link is internal, relativize url --}}
+            <a  class="pl-1 {{#unless ./items.length}}spacer{{/unless}}{{#if (eq @root.page.url ./url)}} is-current-page is-active{{/if}}" href="{{relativize ./url}}">{{{./content}}}</a>
+          {{~else}} {{!-- just send to url --}}
+            <a class="pl-1 {{#unless ./items.length}}spacer{{/unless}}{{#if (eq @root.page.url ./url)}} is-current-page is-active{{/if}}" href="{{{./url}}}">{{{./content}}}</a>
+          {{~/if}}
+        {{else}} {{!-- no url for nav-item, so just display as span --}}
+          <span class="pl-1 pointer{{#unless ./items.length}} spacer{{/unless}}{{#if (eq @root.page.url ./url)}} is-current-page is-active{{/if}}">{{{./content}}}</span>
+        {{/if}}
+      </div>
+      {{#if ./items.length}} {{!-- nav item has sub nav items --}}
+        <div class="nav-children-panel hide">
+          {{> nav-tree navigation=./items}}
+        </div>
+      {{/if}}
+    {{else}} {{!-- no content, so just keep going --}}
+      {{> nav-tree navigation=./items}}
+    {{/if}}
+  {{/each}}
 {{/if}}
