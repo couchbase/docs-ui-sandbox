@@ -18,7 +18,7 @@
 
 .doc.landing-page-doc p {
   font-size: 1rem;
-  color: var(--color-brand-black);
+  /* color: var(--color-brand-black); */
   font-family: "Open Sans", sans-serif;
 }
 
@@ -69,7 +69,8 @@
   width: 100%;
 }
 
-.doc.landing-page-doc .filter-info span {
+.doc.landing-page-doc .filter-info span,
+.tut-metadata .developer {
   color: var(--color-brand-light-blue);
   border-radius: 8px;
   border: 1px solid var(--color-brand-light-blue);
@@ -206,7 +207,7 @@
 }
 
 .doc.landing-page-doc h2 {
-  margin: 0;
+  /* margin: 0; */
   color: var(--color-brand-black);
   padding: 0;
 }
@@ -342,6 +343,69 @@
   list-style: none;
 }
 
+
+.landing-page-doc .col-2 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.landing-page-doc .col-2 .paragraph {
+  width: 50%;
+}
+
+.landing-page-doc .sectionbody {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.landing-page-doc .card {
+  flex-basis: calc(50% - 20px);
+  margin-bottom: 1.75rem;
+}
+
+.landing-page-doc .card:nth-child(odd) {
+  margin-right: 1.25rem;
+}
+
+.landing-page-doc .card h3 {
+  color: var(--color-brand-blue-secondary);
+}
+
+.landing-page-doc .tut-metadata {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.tut-metadata h4,
+.tut-content h4,
+.tut-list h4 {
+  display: none;
+}
+
+.tut-metadata .paragraph { margin-top: 0 !important; }
+
+.tut-metadata .tut-level { margin-right: 1rem; }
+
+.tut-list {
+  display: flex;
+}
+
+.tut-list .ulist {
+  padding: 0;
+  margin-right: 1.25rem;
+}
+
+.tut-list .ulist div.title {
+  margin: 0;
+  color: var(--color-brand-black);
+}
+
+
+
 /* Responsive CSS  */
 
 @media screen and (max-width: 1169px) {
@@ -403,5 +467,14 @@
   .card-row.two-column-row .column:not(.data-filter-column):nth-child(odd) {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .landing-page-doc .card {
+    flex-basis : 100%;
+    margin-right: 0;
+  }
+  .landing-page-doc .col-2 .paragraph {
+    width: 100%;
+    margin: 0.75rem 0;
   }
 }
