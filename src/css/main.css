@@ -71,6 +71,18 @@ main p {
   white-space: nowrap;
 }
 
+.article-banner {
+  justify-content: center;
+}
+
+.banner-text {
+  margin: 0.5rem 0;
+}
+
+.banner-text {
+ font-size: 0.75rem;
+}
+
 .article-banner a.btn:focus,
 .article-banner a.btn:hover {
   background-color: #fff;

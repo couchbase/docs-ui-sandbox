@@ -5,7 +5,10 @@
     {{#if (and @root.page.componentVersion.prerelease (not @root.page.latest.prerelease))}}
     <p>You are viewing the documentation for a prerelease version.</p>
     {{else}}
-    <p>A newer version of this documentation is available.</p>
+    <div class="banner-text">
+      <p>A newer version of this documentation is available.</p>
+      <span>The page is for an End Of Life version</span>
+    </div>
     {{/if}}
     <a class="btn" href="{{relativize this}}">View Latest</a>
   </div>
