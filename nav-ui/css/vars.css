@@ -1,0 +1,142 @@
+:root {
+  /* NOTE tint colors are 15% transparent */
+  /* primary */
+  --color-brand-primary: #262626;
+  --color-brand-black: #000;
+  --color-brand-red: #ea2328;
+  --color-brand-red-tint: #fcdedf;
+  --color-brand-white: #fff;
+  /* secondary */
+  --color-brand-secondary: #fff;
+  --color-brand-blue: #4287d6;
+  --color-blue-rgb: 87, 160, 255;
+  --color-brand-light-blue: #00ace0;
+  --color-brand-light-blue-tint: #d9f3fb;
+  --color-brand-pink: #eb4971;
+  --color-brand-green: #00b9be;
+  --color-brand-purple: #b36cdb;
+  --color-brand-purple-tint: #f4e9fa;
+  --color-brand-tip: #2ca01c;
+  --color-brand-note: #0074e0;
+  --color-brand-important: #b36cdb;
+  --color-brand-warning: #ea2328;
+  --color-brand-caution: #ff8f00;
+  /* tertiary */
+  --color-gray-rgb: 115, 118, 138;
+  --color-brand-gray1: #292b36;
+  --color-brand-gray2: #3d4151;
+  --color-brand-gray3: #52566c;
+  --color-brand-gray4: #73768a;
+  --color-brand-gray5: #c8cbdf;
+  --color-brand-gray6: #eaebf1;
+  --color-brand-gray7: #f9f9f9;
+  --color-brand-gray8: #e5e5e5;
+  --color-brand-gray9: #bfbfbf;
+  /* --color-brand-silver: #ccc; */
+  --color-brand-silver: #c1c1c1;
+  --color-brand-blue-secondary: #0074e0;
+  --color-brand-blue-secondary-light: #2689e5;
+  --color-brand-blue-secondary-extra-light: #73b3ee;
+  --color-brand-blue-tint: #d9eafb;
+  --color-brand-orange: #fc9c0c;
+  --color-brand-orange-tint: #fff0da;
+  --color-muted: var(--color-brand-gray);
+  --color-text: #333;
+  --color-code: var(--color-brand-pink);
+  --color-border: var(--color-brand-silver);
+  --checkbox-border-color: var(--color-brand-gray9);
+
+  /* Color for URL */
+  --color-link: var(--color-brand-blue-secondary);
+  --color-link-active: var(--color-brand-blue-secondary-light);
+  --color-link-hover: var(--color-brand-blue-secondary-extra-light);
+
+  /* --color-border-table: #666; */
+  --color-border-table: #dadada;
+  --color-shade: #f3f3f3;
+  --color-navbar-bg: var(--color-brand-black);
+  --color-navbar-text: var(--color-brand-white);
+  --color-footer-bg: var(--color-shade);
+  --color-footer-bg-gray: var(--color-brand-black);
+  --color-footer-text: var(--color-text);
+
+  /* Color for code block  */
+  --hljs-attr: #407787;
+  --hljs-string: #295d1e;
+  --hljs-number: #0711ba;
+  /* --height-navbar: 4rem; */
+  --height-spacer: 1.1rem;
+  --height-navbar: 6rem;
+  --height-version-control: 4.5rem;
+  --height-to-body: calc(var(--height-navbar) + var(--height-spacer));
+  --height-min-body: calc(100vh - var(--height-to-body));
+  --height-toc-sidebar: calc(var(--height-min-body));
+  --height-nav: calc(var(--height-min-body) + var(--height-spacer));
+  --height-nav-with-version: calc(100vh - var(--height-to-body) - var(--height-version-control));
+  --nav-menu-top-space: calc(var(--height-to-body) + var(--height-version-control));
+  --h2-heading-top-space: calc(var(--height-to-body) + 0.5rem);
+  /* --width-main-gutter: 1.5rem; */
+  --width-main-gutter: 2.5rem;
+  --width-container: 90rem;
+  --width-container-fluid: 100%;
+  --width-container-gutter: 1.25rem;
+  --width-nav: 20rem;
+  --width-toc: 13rem;
+  /* Font weight */
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  /* Z-index  */
+  --z-index-feedback: 7;
+  --z-index-nav-mobile: 6;
+  --z-index-navbar-dropdown-link: 5;
+  --z-index-navbar-dropdown: 4;
+  --z-index-navbar: 3;
+  --z-index-footer: 2;
+  --z-index-nav: 1;
+
+  /* Color brand tabsets */
+  --color-active-tabset: #57a1ff;
+
+  /* New  design font style */
+
+  --font-base: 1rem; /* ~16px */
+  --font-medium: 1.25rem; /* ~20px */
+  --font-small: 0.875rem; /* ~14px */
+  --labels-font-size: 0.75rem; /* ~12px */
+  --labels-line-height: 1;
+
+  /* Heading fonts */
+  --heading-h1: 2.5rem; /* ~40px */
+  --heading-h2: 2rem; /* ~32px */
+  --heading-h3: 1.5rem; /* ~24px */
+  --heading-h4: 1.25rem; /* ~20px */
+  --heading-h5: var(--font-base);  /* ~16px */
+
+  /* line height  */
+  --line-height-body: 160%;
+  --line-height-heading: 110%;
+  --line-height-base: 1.375rem;
+
+  /* Spacing variables */
+  --base-space: 1rem; /* ~ 16px */
+  --base-small-space: 0.75rem; /* ~ 12px */
+  --base-extra-small-space: 0.5rem; /* ~ 8px */
+  --base-medium-space: 1.5rem; /* ~ 24px */
+  --base-large-space: 2rem; /* ~ 32px */
+  --base-extra-large-space: 2.5rem; /* ~ 40px */
+  --column-space: 2.5rem; /* ~ 40px */
+  --admonition-icon-space: 1rem; /* ~ 16px */
+  --admonition-content-space: 1rem; /* ~ 16px */
+
+  /* Heading fonts for responsive */
+  --heading-h1-sm: 2.25rem; /* ~36px */
+  --heading-h2-sm: 1.75rem; /* ~28px */
+  --heading-h3-sm: 1.25rem; /* ~20px */
+  --heading-h4-sm: 0.875rem; /* ~14px */
+
+  /* --image-block-max width */
+  --image-block-container: 64rem; /* ~ 1024px  */
+}
