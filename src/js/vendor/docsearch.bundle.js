@@ -408,7 +408,8 @@
       var lvl1 = hit.hierarchy.lvl1
       if (!lvl0) {
         if ((lvl0 = hit.component_title)) {
-          lvl0 = hit.hierarchy.lvl0 = lvl0 + (hit.display_version ? ' ' + hit.display_version : '')
+          var displayVersion = hit.display_version || [].concat(hit.component_version)[0].split('@')[1]
+          lvl0 = hit.hierarchy.lvl0 = lvl0 + (displayVersion ? ' ' + displayVersion : '')
         } else {
           lvl0 = hit.hierarchy.lvl0 = hit.component + (hit.version ? ' ' + hit.version : '')
         }
