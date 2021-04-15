@@ -162,6 +162,12 @@
   color: #174d8c;
 }
 
+.algolia-autocomplete .ds-pagination a.inactive {
+  color: currentColor;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
 .algolia-autocomplete .ds-pagination--prev::before,
 .algolia-autocomplete .ds-pagination--next::after {
   display: inline-block;

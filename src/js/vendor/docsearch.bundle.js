@@ -32,8 +32,8 @@
           footer:
             '<div class="ds-filter"></div>' +
             '<div class="ds-footer"><div class="ds-pagination">' +
-            '<span class="ds-pagination--curr">Page 1</span>' +
             '<a href="#" class="ds-pagination--prev">Prev</a>' +
+            '<span class="ds-pagination--curr">No results</span>' +
             '<a href="#" class="ds-pagination--next">Next</a></div>' +
             '<div class="algolia-docsearch-footer">' +
             'Search by <a class="algolia-docsearch-footer--logo" href="https://www.algolia.com/docsearch" ' +
@@ -65,8 +65,8 @@
     menu.off('mouseleave.aa')
     var suggestionSelector = '.' + dropdown.cssClasses.prefix + dropdown.cssClasses.suggestion
     menu.on('mousedown.aa', suggestionSelector, onSuggestionMouseDown.bind(dropdown))
-    menu.find('.ds-pagination--prev').on('click', paginate.bind(typeahead, -1)).css('visibility', 'hidden')
-    menu.find('.ds-pagination--next').on('click', paginate.bind(typeahead, 1)).css('visibility', 'hidden')
+    menu.find('.ds-pagination--prev').on('click', paginate.bind(typeahead, -1)).addClass('inactive')
+    menu.find('.ds-pagination--next').on('click', paginate.bind(typeahead, 1)).addClass('inactive')
     monitorCtrlKey.call(typeahead)
     searchField.addEventListener('click', confineEvent)
     document.documentElement.addEventListener('click', clearSearch.bind(typeahead))
@@ -211,10 +211,10 @@
     var menu = this.$menu
     menu
       .find('.ds-pagination--curr')
-      .html(result.pages ? 'Page ' + (page + 1) + ' of ' + result.pages : 'No results')
+      .html(result.pages ? '[ Page ' + (page + 1) + ' of ' + result.pages + ' ]': 'No results')
       .data('page', page)
-    menu.find('.ds-pagination--prev').css('visibility', page > 0 ? '' : 'hidden')
-    menu.find('.ds-pagination--next').css('visibility', result.pages > page + 1 ? '' : 'hidden')
+    menu.find('.ds-pagination--prev').toggleClass('inactive', page < 1)
+    menu.find('.ds-pagination--next').toggleClass('inactive', page + 1 >= result.pages)
     getScrollableResultsContainer(this).scrollTop(0)
   }
 
@@ -370,7 +370,7 @@
         versions = document.createElement('select')
         if (Object.keys(componentVersions).length > 1) {
           var wildcardVersionOption = Object.assign(document.createElement('option'), { value: '' })
-          wildcardVersionOption.appendChild(document.createTextNode('*'))
+          wildcardVersionOption.appendChild(document.createTextNode('All (*)'))
           versions.appendChild(wildcardVersionOption)
         }
         Object.entries(componentVersions).forEach(function (componentVersionEntry) {
