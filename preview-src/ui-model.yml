@@ -1,8 +1,16 @@
 antoraVersion: '2.3.1'
+navMode: template # set value to client to generate navigation on the client
 site:
   title: Couchbase Docs
   url: http://localhost:5252
   homeUrl: &home_url /home.html
+  keys:
+    navGroups: |
+      [
+        { "title": "Server", "startPage": "home::server.adoc", "components": ["server", "*-connector"], "url": "/index.html" },
+        { "title": "Mobile", "startPage": "home::mobile.adoc", "components": ["couchbase-lite", "sync-gateway"], "url": "#" },
+        { "title": "Cloud", "startPage": "home::cloud.adoc", "components": ["operator"], "url": "#" }
+      ]
   components:
     server:
       versions:
@@ -13,11 +21,13 @@ site:
         version: '5.5'
         title: Couchbase Server
         url: /server/5.5/index.html
+        navigation:
+        - content: Introduction
       - version: '5.1'
         url: /index.html
         navigation:
         - content: Introduction
-          url: /index.html
+          url: '#'
           urlType: fragment
           items:
           - content: Why Couchbase?
@@ -46,7 +56,6 @@ site:
           items:
           - content: Monitoring
             url: /server/5.1/monitoring.html
-            urlType: internal
             items:
             - content: Monitor Using the REST API
               url: '#'
@@ -56,7 +65,6 @@ site:
               urlType: fragment
             - content: Monitoring Statistics
               url: /index.html
-              urlType: internal
             - content: Monitoring XDCR Timestamp-based Conflict Resolution
               url: '#'
               urlType: fragment
@@ -123,14 +131,24 @@ site:
       - version: '4.6'
         url: '#'
       latest: *latest_server
-    elasticsearch-connector:
-      url: /elasticsearch-connector/3.0/index.html
-    kafka-connector:
-      url: /kafka-connector/3.4/index.html
     spark-connector:
-      url: /spark-connector/2.2/index.html
-    operator:
-      url: /operator/1.0/overview.html
+      versions:
+      - &latest_spark_connector
+        version: '2.4'
+        title: Spark Connector
+        url: /spark-connector/2.4/index.html
+        navigation:
+        - content: Spark Connector
+          items:
+          - content: Getting Started
+            url: /spark-connector/2.4/getting-started.html
+          - content: Streaming Integration
+            url: /spark-connector/2.4/streaming-integration.html
+      - version: '2.3'
+        url: /spark-connector/2.3/index.html
+        navigation:
+        - content: Spark Connector
+      latest: *latest_spark_connector
     couchbase-lite:
       url: /couchbase-lite/2.1/index.html
     sync-gateway:

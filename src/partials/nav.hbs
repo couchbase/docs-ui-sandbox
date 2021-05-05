@@ -1,5 +1,7 @@
-<nav class="nav">
-{{#if page.navigation}}
+<aside class="left-sidebar">
+  <div class="nav-container">
+    {{#if (eq (nav-mode) 'template')}}
 {{> nav-menu}}
-{{/if}}
-</nav>
+    {{/if}}
+  </div>
+</aside>

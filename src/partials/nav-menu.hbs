@@ -1,7 +1,32 @@
-<div class="left-sidebar-menu">
-{{> nav-version-control}}
-<div class="nav-menu">
-{{> nav-tree navigation=page.navigation level=0 crumbLevel=0 crumbAtLevel=(lookup page.breadcrumbs 0)}}
-</div>
-<a href="#" class="menu-expand-toggle"> <span>Navigation</span> <i class="fas fa-times-circle"></i> <i class="fas fa-chevron-circle-left"></i></a>
+<div class="components">
+  {{#with (nav-group-for-page (nav-groups))}}
+  <div class="components_group-title">
+    {{#if ./url}}<a href="{{relativize ./url}}">{{{./title}}}</a>{{else}}{{{./title}}}{{/if}}
+  </div>
+  <ul class="components_list">
+    {{#each ./components as |componentName|}}
+    {{#with (lookup @root.site.components this)}}
+    <li class="components_list-items">
+      <div class="component_list-version">
+        <span class="component_list_title">{{{./title}}}</span>
+        {{#with (or (and (eq @root.page.component.name componentName) @root.page.version) (lookup ../../latestVersions componentName)) as |activeVersion|}}
+        {{#unless (eq activeVersion 'master')}}
+        <select class="version_list">
+          {{#each ../versions}}
+          <option value="{{./version}}"{{#if (eq ./version activeVersion)}} selected{{/if}}>{{or ./displayVersion ./version}}</option>
+          {{/each}}
+        </select>
+        {{/unless}}
+        {{/with}}
+      </div>
+      {{#each ./versions}}
+      <div class="version_items{{#unless (and (eq @root.page.component.name ../componentName) (eq @root.page.version ./version))}} hide{{/unless}}" data-version="{{./version}}">
+{{> nav-tree navigation=./navigation level=0}}
+      </div>
+      {{/each}}
+    </li>
+    {{/with}}
+    {{/each}}
+  </ul>
+  {{/with}}
 </div>

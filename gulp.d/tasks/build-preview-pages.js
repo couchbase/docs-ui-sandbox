@@ -7,6 +7,7 @@ Error.call = (self, ...args) => {
 }
 
 const asciidoctor = require('asciidoctor.js')()
+const File = require('vinyl')
 const fs = require('fs-extra')
 const handlebars = require('handlebars')
 const iconPacks = {
@@ -31,6 +32,7 @@ const iconShims = require('@fortawesome/fontawesome-free/js/v4-shims').reduce((a
   accum['fa-' + it[0]] = [it[1] || 'fas', 'fa-' + (it[2] || it[0])]
   return accum
 }, {})
+const { inspect } = require('util')
 const { obj: map } = require('through2')
 const merge = require('merge-stream')
 const ospath = require('path')
@@ -129,6 +131,7 @@ module.exports = (src, previewSrc, previewDest, sink = () => map()) => (done) =>
               }
             },
             function (done) {
+              if (baseUiModel.navMode === 'client') this.push(exportSiteNavigationData(baseUiModel.site.components))
               vfs
                 .src('js/vendor/fontawesome-icon-defs.js', { base: src, cwd: src })
                 .pipe(
@@ -227,6 +230,23 @@ function compileLayouts (src) {
 
 function copyImages (src, dest) {
   return vfs.src('**/*.{png,svg}', { base: src, cwd: src }).pipe(vfs.dest(dest))
+}
+
+function exportSiteNavigationData (components) {
+  const navigationData = Object.values(components).map(({ name, title, versions }) => ({
+    name,
+    title,
+    versions: versions.map(({ version, displayVersion, navigation: sets = [] }) =>
+      version === displayVersion ? { version, sets } : { version, displayVersion, sets }
+    ),
+  }))
+  return new File({
+    contents: Buffer.from(
+      'window.siteNavigationData = ' +
+      inspect(navigationData, { depth: null, maxArrayLength: null, breakLength: 250 })
+    ),
+    path: 'site-navigation-data.js',
+  })
 }
 
 function findNavPath (currentUrl, node = [], current_path = [], root = true) {
