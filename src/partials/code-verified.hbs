@@ -1,0 +1,16 @@
+{{#if (eq page.attributes.topic-type 'howto')}}
+{{#if (or page.attributes.last-updated page.attributes.code-verified)}}
+<div class="code-verified">
+  {{#if page.attributes.last-updated}}
+    <div class="list modified">
+      Last Updated: {{page.attributes.last-updated}}
+    </div>
+  {{/if}}
+    {{#if (eq page.attributes.code-verified 'verified')}}
+    <div class="list verified">
+      <i class='fas fa-check'></i> Page Test
+    </div>
+  {{/if}}
+</div>
+{{/if}}
+{{/if}}

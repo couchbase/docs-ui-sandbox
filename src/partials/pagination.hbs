@@ -1,0 +1,40 @@
+{{#unless (eq page.attributes.pagination undefined)}}
+{{#if (eq page.attributes.topic-type 'howto')}}
+{{#if (or page.previous page.next)}}
+<nav class="article-pagination">
+  {{#with page.previous}}
+  <div class="prev">
+    <a href="{{{relativize ./url}}}">
+      <div class="change-page">
+        <div class="arrow arrow-prev">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="content">
+          <span class="label">Previous</span>
+          <br>
+          <span class="title">{{{./content}}}</span>
+        </div>        
+      </div>
+    </a>
+  </div>
+  {{/with}}
+  {{#with page.next}}
+  <div class="next">
+    <a href="{{{relativize ./url}}}">
+      <div class="change-page">
+        <div class="content">
+          <span class="label">Next</span>
+          <br>
+          <span class="title">{{{./content}}}</span>
+        </div>
+        <div class="arrow arrow-next">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+      </div>
+    </a>
+  </div>
+  {{/with}}
+</nav>
+{{/if}}
+{{/if}}
+{{/unless}}
