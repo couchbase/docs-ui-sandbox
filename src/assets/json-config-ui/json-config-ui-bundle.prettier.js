@@ -6001,6 +6001,7 @@ object-assign
 										switch (s) {
 											case "string":
 											case "integer":
+											case "number":
 											case "boolean":
 												n.push({
 													name: i,
@@ -6119,6 +6120,9 @@ object-assign
 												t[r] = "string";
 												break;
 											case "integer":
+												t[r] = 0;
+												break;
+											case "number":
 												t[r] = 0;
 												break;
 											case "boolean":
