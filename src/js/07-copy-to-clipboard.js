@@ -40,7 +40,7 @@
     runCode.dataset.title = 'Run Code'
     runCode.href= '#'
     runCode.target = '_blank'
-    runCode.appendChild(document.createElement('i')).className = 'far fa-code'
+    runCode.appendChild(document.createElement('i')).className = 'fas fa-terminal'
     var runCodeText = document.createTextNode('Run Code')
     runCode.appendChild(runCodeText)
 
