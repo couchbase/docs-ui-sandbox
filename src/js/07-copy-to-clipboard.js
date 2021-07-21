@@ -1,7 +1,6 @@
 ;(function () {
   'use strict'
   document.querySelectorAll('pre > code').forEach(function (codeBlock) {
-    console.log(codeBlock,4)
     var viewSourceLink
     var sourceUrl = codeBlock.dataset.sourceUrl
     if (sourceUrl) {
@@ -39,7 +38,6 @@
     runCode.className= 'run-code'
     runCode.dataset.title = 'Run Code'
     runCode.href= '#'
-    runCode.target = '_blank'
     runCode.appendChild(document.createElement('i')).className = 'fas fa-terminal'
     var runCodeText = document.createTextNode('Run Code')
     runCode.appendChild(runCodeText)
@@ -84,6 +82,23 @@
         )
       }
     })
+
+    // Run Code block
+    runCode.addEventListener('click', function (e) {
+      e.preventDefault()
+      var root = document.getElementsByTagName('html')
+      if(root[0].classList.contains('terminal-launched')){
+        return false;
+      }
+      root[0].classList.add("terminal-launched")
+
+      var closeShell = document.querySelector('.close-shell')
+      closeShell.addEventListener('click', function (e) {
+        e.preventDefault()
+        root[0].classList.remove("terminal-launched")
+      })
+    })
+
     var pre = codeBlock.parentNode
     pre.prepend(sourceTypeBox)
     sourceTypeBox.appendChild(headingBox)
@@ -94,4 +109,8 @@
     sourceTypeBoxCol2.appendChild(runCode)
     pre.appendChild(fadeShadow)
   })
+
+
+  
+
 })()
